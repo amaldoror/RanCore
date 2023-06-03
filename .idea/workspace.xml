@@ -4,44 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1d59f071-8e00-4d41-9b85-e467a35b86f4" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gradlew" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gradlew.bat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/settings.gradle" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/rancore/ai/NeuralNet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/rancore/ai/NeuralNetExample.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/rancore/aleph/Strings.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/rancore/crypto/KSHA3.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/rancore/crypto/KSHA3EncryptionExample.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/rancore/crypto/SHA3EncryptionExample.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/rancore/crypto/SHA3Example.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/rancore/crypto/Turing.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/rancore/math/Euklid.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/rancore/math/Euler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/rancore/math/Factorial.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/rancore/math/Fibonacci.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/rancore/math/Fraction.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/rancore/math/HarmonicSeries.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/rancore/math/Pi.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/rancore/math/Prime.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/rancore/path/AStarExample.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/rancore/path/AStarNode.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/rancore/path/AStarSearch.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/rancore/path/BellmanFord.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/rancore/path/Dijkstra.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/rancore/safespace/Playground.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/rancore/space/ISSDataRetriever.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/rancore/space/pom.xml" afterDir="false" />
-    </list>
+    <list default="true" id="1d59f071-8e00-4d41-9b85-e467a35b86f4" name="Changes" comment="Changes 6/3/2023 AM" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -116,13 +79,13 @@
       <recent name="G:\_CODE\_IntelliJ IDEA Projects\RanCore\src" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.AStarExample">
-    <configuration name="AStarExample" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="rancore.path.AStarExample" />
+  <component name="RunManager" selected="Application.Pi">
+    <configuration name="Pi" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="rancore.math.Pi" />
       <module name="RanCore.main" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="rancore.path.*" />
+          <option name="PATTERN" value="rancore.math.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -193,11 +156,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Pi" />
         <item itemvalue="Gradle.RanCore [javadoc]" />
         <item itemvalue="Application.Turing" />
         <item itemvalue="Application.SHA3EncryptionExample" />
         <item itemvalue="Application.SHA3Example" />
-        <item itemvalue="Application.AStarExample" />
       </list>
     </recent_temporary>
   </component>
@@ -214,8 +177,16 @@
       <workItem from="1685811554900" duration="244000" />
       <workItem from="1685811815865" duration="1273000" />
       <workItem from="1685814978318" duration="1680000" />
-      <workItem from="1685816672643" duration="5639000" />
+      <workItem from="1685816672643" duration="7550000" />
     </task>
+    <task id="LOCAL-00001" summary="Changes 6/3/2023 AM">
+      <created>1685825757783</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1685825757783</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -231,5 +202,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Changes 6/3/2023 AM" />
+    <option name="LAST_COMMIT_MESSAGE" value="Changes 6/3/2023 AM" />
   </component>
 </project>
