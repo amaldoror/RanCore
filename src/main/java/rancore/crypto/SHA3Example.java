@@ -10,9 +10,10 @@ public class SHA3Example {
         try {
             byte[] hash = calculateSHA3(input);
             String hexHash = bytesToHex(hash);
-            System.out.println("SHA-3 Hash: " + hexHash);
+            System.out.println("Input: " + input);
+            System.out.println("Hash:  " + hexHash);
         } catch (NoSuchAlgorithmException e) {
-            e.printStackTrace();
+            System.out.println("Der angeforderte Algorithmus ist nicht vorhanden!");
         }
     }
 

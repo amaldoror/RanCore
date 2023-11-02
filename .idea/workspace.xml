@@ -5,8 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1d59f071-8e00-4d41-9b85-e467a35b86f4" name="Changes" comment="Changes 6/3/2023 AM">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/rancore/crypto/SHA3Example.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/rancore/crypto/SHA3Example.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,22 +28,7 @@
         </task>
         <projects_view>
           <tree_state>
-            <expand>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="RanCore" type="f1a62948:ProjectNode" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="RanCore" type="f1a62948:ProjectNode" />
-                <item name="Tasks" type="e4a08cd1:TasksNode" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="RanCore" type="f1a62948:ProjectNode" />
-                <item name="Dependencies" type="6de06a37:ExternalSystemViewDefaultContributor$MyDependenciesNode" />
-              </path>
-            </expand>
+            <expand />
             <select />
           </tree_state>
         </projects_view>
@@ -51,11 +38,17 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="master" />
+        <entry key="$PROJECT_DIR$" value="dev" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 4
+}]]></component>
   <component name="ProjectId" id="2QhaJTkwW1k7gWVFOxpVHUzHVYP" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
@@ -72,8 +65,8 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "master",
-    "last_opened_file_path": "G:/_CODE/_IntelliJ IDEA Projects/RanCore/gradle",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "C:/Users/ran/Desktop/RanCore",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -92,7 +85,7 @@
       <recent name="G:\_CODE\_IntelliJ IDEA Projects\RanCore\src" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Pi">
+  <component name="RunManager" selected="Application.SHA3Example">
     <configuration name="Pi" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="rancore.math.Pi" />
       <module name="RanCore.main" />
@@ -164,16 +157,16 @@
       <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
       <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
       <DebugAllEnabled>false</DebugAllEnabled>
-      <ForceTestExec>false</ForceTestExec>
+      <RunAsTest>false</RunAsTest>
       <method v="2" />
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Pi" />
         <item itemvalue="Gradle.RanCore [javadoc]" />
         <item itemvalue="Application.Turing" />
-        <item itemvalue="Application.SHA3EncryptionExample" />
         <item itemvalue="Application.SHA3Example" />
+        <item itemvalue="Application.SHA3EncryptionExample" />
+        <item itemvalue="Application.Pi" />
       </list>
     </recent_temporary>
   </component>
@@ -192,6 +185,7 @@
       <workItem from="1685814978318" duration="1680000" />
       <workItem from="1685816672643" duration="7889000" />
       <workItem from="1685826157021" duration="324000" />
+      <workItem from="1698959493491" duration="1098000" />
     </task>
     <task id="LOCAL-00001" summary="Changes 6/3/2023 AM">
       <created>1685825757783</created>
