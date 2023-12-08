@@ -1,4 +1,4 @@
-package rancore.safespace;
+package rancore.playground;
 import rancore.math.*;
 
 public class Playground {

@@ -3,17 +3,11 @@ import java.nio.ByteBuffer;
 import java.nio.charset.StandardCharsets;
 
 /**
- * KSHA3
- * Version 1.0
- * 2023/06/03
- * <p>
- * Attribution
- * CC BY
- * <a href="https://creativecommons.org/licenses/by/4.0/">...</a>
- * <p>
- * Adrian Morgenthal
- * <a href="https://github.com/Voraxx">...</a>
- * <p>
+ * <p><u><b>Class Name</b></u></p>
+ * <p>NeuralNet</p>
+ *
+ * <p><u><b>Description</b></u></p>
+ *
  * KSHA3 is an implementation of the Keccak-f function, which is a component of the SHA-3 cryptographic hash function.
  * The calculateHash method takes an input string, converts it to bytes using UTF-8 encoding,
  * and then applies the Keccak-f function to generate a hash value.
