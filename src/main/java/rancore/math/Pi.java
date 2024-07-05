@@ -23,12 +23,6 @@ package rancore.math;
  * <p><code>None</code></p>
  *
  * <p>It's important to note that the approximations provided by these methods are not exact and may have varying levels of accuracy depending on the input parameters.</p>
- *
- * <p><u><b>License:</b></u></p>
- * <p>Version 1.0</p>
- * <p>2023/06/03</p>
- * <p>Attribution: <a href="https://creativecommons.org/licenses/by/4.0/">CC BY</a></p>
- * <p>Adrian Morgenthal <a href="https://github.com/Voraxx">Github</a></p>
  */
 public class Pi {
     public static void main(String[] args) {
@@ -45,11 +39,11 @@ public class Pi {
         System.out.println("---------------------------------------");
         System.out.println("Different methods for approximating pi:");
         System.out.println("---------------------------------------");
-        System.out.println("Archimedes: " + Pi.pi(archimedes,   a   ));
-        System.out.println("Leibniz:    " + Pi.pi(leibniz,      l   ));
-        System.out.println("MonteCarlo: " + Pi.pi(monteCarlo,   m   ));
-        System.out.println("Ramanujan:  " + Pi.pi(ramanujan,    r   ));
-        System.out.println("Math.PI:    " + Math.PI);
+        System.out.println("Archimedes:\t\t" + Pi.pi(archimedes,   a   ));
+        System.out.println("Leibniz:\t\t" + Pi.pi(leibniz,      l   ));
+        System.out.println("MonteCarlo:\t\t" + Pi.pi(monteCarlo,   m   ));
+        System.out.println("Ramanujan:\t\t" + Pi.pi(ramanujan,    r   ));
+        System.out.println("Math.PI:\t\t" + Math.PI);
         System.out.println("---------------------------------------");
     }
     /**
@@ -60,18 +54,13 @@ public class Pi {
      * @return an approximation of Pi using the specified method
      */
     public static double pi(int method, int n) {
-        switch (method) {
-            case 1:
-                return archimedesMethod(n); // Example value = 6
-            case 2:
-                return leibnizSeries(n); // Example value = 100000
-            case 3:
-                return monteCarloMethod(n); // Example value = 10000000
-            case 4:
-                return ramanujanFormula(n); // Example value = 10
-            default:
-                throw new IllegalArgumentException("Invalid method selector. Available options: 1-4");
-        }
+        return switch (method) {
+            case 1 -> archimedesMethod(n); // Example value = 6
+            case 2 -> leibnizSeries(n); // Example value = 100000
+            case 3 -> monteCarloMethod(n); // Example value = 10000000
+            case 4 -> ramanujanFormula(n); // Example value = 10
+            default -> throw new IllegalArgumentException("Invalid method selector. Available options: 1-4");
+        };
     }
 
     /**
@@ -83,10 +72,9 @@ public class Pi {
      * @return an approximation of Pi using the Archimedes Method
      */
     public static double archimedesMethod(int sides) {
-        double polygonSides = sides;
-        double innerAngle = 360.0 / polygonSides;
+        double innerAngle = 360.0 / (double) sides;
         double halfSideLength = Math.sin(Math.toRadians(innerAngle / 2));
-        double polygonPerimeter = polygonSides * 2 * halfSideLength;
+        double polygonPerimeter = (double) sides * 2 * halfSideLength;
         return polygonPerimeter/2;
     }
 

@@ -15,14 +15,7 @@ package rancore.math;
  *
  * <p><u><b>Methods:</b></u></p>
  * <p><code>euklid(int zahl1, int zahl2):</code> Calculates the greatest common divisor (GCD) of two numbers using the Euclidean algorithm.</p>
- *
- * <p><u><b>License:</b></u></p>
- * <p>Version 1.0</p>
- * <p>2023/05/20</p>
- * <p>Attribution: <a href="https://creativecommons.org/licenses/by/4.0/">CC BY</a></p>
- * <p>Adrian Morgenthal <a href="https://github.com/Voraxx">Github</a></p>
  */
-
 public class Euklid {
 
     /**

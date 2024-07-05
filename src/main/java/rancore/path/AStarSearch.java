@@ -24,12 +24,6 @@ import java.util.*;
  * <p><code>getFScore(Node node)</code>:</p> Retrieves the f-score (g-score + heuristic) of a node.</p>
  * <p><code>getNeighbors(Node node)</code>:</p> Retrieves the neighboring nodes of a given node.</p>
  * <p><code>reconstructPath(Node currentNode)</code>:</p> Reconstructs the path from the start node to the current node.</p>
- *
- * <p><u><b>License:</b></u></p>
- * <p>Version 1.0</p>
- * <p>2023/06/03</p>
- * <p>Attribution: <a href="https://creativecommons.org/licenses/by/4.0/">CC BY</a></p>
- * <p>Adrian Morgenthal <a href="https://github.com/Voraxx">Github</a></p>
  */
 
 class AStarSearch {

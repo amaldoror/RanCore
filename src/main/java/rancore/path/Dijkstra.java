@@ -27,12 +27,6 @@ import java.util.*;
  *
  * <p>It's important to note that Dijkstra's algorithm is designed for graphs without negative edge weights, and it has a time complexity of O(log.e(V)),
  * where V is the number of nodes. There are more efficient algorithms, such as the A* algorithm, for finding shortest paths in large graphs.</p>
- *
- * <p><u><b>License:</b></u></p>
- * <p>Version 1.0</p>
- * <p>2023/06/03</p>
- * <p>Attribution: <a href="https://creativecommons.org/licenses/by/4.0/">CC BY</a></p>
- * <p>Adrian Morgenthal <a href="https://github.com/Voraxx">Github</a></p>
  */
 
 public class Dijkstra {
@@ -74,7 +68,7 @@ public class Dijkstra {
         // Print the shortest distances
         System.out.println("Knoten\t\tDistanz");
         for (int i = 0; i < numVertices; i++) {
-            System.out.println(i + "\t\t" + distances[i]);
+            System.out.println(i + "\t\t\t" + distances[i]);
         }
     }
 

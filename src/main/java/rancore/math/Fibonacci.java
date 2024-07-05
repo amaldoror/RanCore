@@ -12,11 +12,6 @@ package rancore.math;
  <p><u><b>Methods:</b></u></p>
  <p><code>main(String[] args):</code> The entry point of the program. Calculates and prints Fibonacci numbers up to a specified position.</p>
  <p><code>fibonacci(int n):</code> Calculates and returns the Fibonacci number at the specified index.</p>
- <p><u><b>License:</b></u></p>
- <p>Version 1.0</p>
- <p>2023/05/20</p>
- <p>Attribution: <a href="https://creativecommons.org/licenses/by/4.0/">CC BY</a></p>
- <p>Adrian Morgenthal <a href="https://github.com/Voraxx">Github</a></p>
  */
 public class Fibonacci {
     public static void main(String[] args) {

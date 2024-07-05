@@ -19,12 +19,6 @@ package rancore.path;
  * <p><code>getX()</code>: Returns the X coordinate of the node.</p>
  * <p><code>getY()</code>: Returns the Y coordinate of the node.</p>
  * <p><code>isObstacle()</code>: Returns true if the node is an obstacle, false otherwise.</p>
- *
- * <p><u><b>License:</b></u></p>
- * <p>Version 1.0</p>
- * <p>2023/06/03</p>
- * <p>Attribution: <a href="https://creativecommons.org/licenses/by/4.0/">CC BY</a></p>
- * <p>Adrian Morgenthal <a href="https://github.com/Voraxx">Github</a></p>
  */
 class AStarNode {
     private int x;  // X coordinate of the node

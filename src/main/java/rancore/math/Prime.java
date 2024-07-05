@@ -2,7 +2,7 @@ package rancore.math;
 
 /**
  * <p><u><b>Class Name:</b></u></p>
- * <p>NumPrimBis</p>
+ * <p>Prime</p>
  *
  * <p><u><b>Description:</b></u></p>
  * <p>The NumPrimBis class provides methods for counting the number of prime numbers between 2 and a given value.</p>
@@ -16,14 +16,7 @@ package rancore.math;
  * <p><u><b>Methods:</b></u></p>
  * <p><code>numPrimsBisRekusiv(int n):</code> Calculates and returns the number of prime numbers between 2 and the specified value <code>n</code> recursively.</p>
  * <p><code>numPrimsBisEndrekursiv(int n, int ergebnis):</code> Calculates and returns the number of prime numbers between 2 and the specified value <code>n</code> using an end recursive approach.</p>
- *
- * <p><u><b>License:</b></u></p>
- * <p>Version 1.0</p>
- * <p>2023/05/20</p>
- * <p>Attribution: <a href="https://creativecommons.org/licenses/by/4.0/">CC BY</a></p>
- * <p>Adrian Morgenthal <a href="https://github.com/Voraxx">Github</a></p>
  */
-
 public class Prime {
     public int numPrimeRecursive(int n) {
         if (n == 1) {
@@ -55,8 +48,9 @@ public class Prime {
 
 
     public static void main(String[] args) {
+        final int n = 10_000;
         Prime numPrime = new Prime();
-        System.out.println(numPrime.numPrimeRecursive(10));
-        System.out.println(numPrime.numPrimeEndRecursive(10, 0));
+        System.out.println(numPrime.numPrimeRecursive(n));
+        System.out.println(numPrime.numPrimeEndRecursive(n, 0));
     }
 }

@@ -16,12 +16,6 @@ package rancore.math;
  * <p><u><b>Methods:</b></u></p>
  * <p><code>harmonicSeriesIterative(int n):</code> Calculates and returns the sum of the harmonic series up to the specified value <code>n</code> iteratively.</p>
  * <p><code>harmonicSeriesRecursive(int n):</code> Calculates and returns the sum of the harmonic series up to the specified value <code>n</code> recursively.</p>
- *
- * <p><u><b>License:</b></u></p>
- * <p>Version 1.0</p>
- * <p>2023/05/20</p>
- * <p>Attribution: <a href="https://creativecommons.org/licenses/by/4.0/">CC BY</a></p>
- * <p>Adrian Morgenthal <a href="https://github.com/Voraxx">Github</a></p>
  */
 
 public class HarmonicSeries {

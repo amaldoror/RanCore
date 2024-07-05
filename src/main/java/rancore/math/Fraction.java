@@ -19,12 +19,6 @@ package rancore.math;
  * <p><code>getNumerator():</code> Returns the numerator of the fraction.</p>
  * <p><code>getDenominator():</code> Returns the denominator of the fraction.</p>
  * <p><code>getResult():</code> Returns the result of the fraction as a floating-point value.</p>
- *
- * <p><u><b>License:</b></u></p>
- * <p>Version 1.0</p>
- * <p>2023/05/20</p>
- * <p>Attribution: <a href="https://creativecommons.org/licenses/by/4.0/">CC BY</a></p>
- * <p>Adrian Morgenthal <a href="https://github.com/Voraxx">Github</a></p>
  */
 
 public class Fraction {

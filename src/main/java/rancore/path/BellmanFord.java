@@ -28,12 +28,6 @@ import java.util.Arrays;
  * <p>It's important to note that the Bellman-Ford algorithm is designed to work with weighted directed graphs and can handle
  * graphs with negative edge weights. However, it has a time complexity of O(V * E), where V is the number of vertices
  * and E is the number of edges, which makes it less efficient than some other algorithms for finding shortest paths.</p>
- *
- * <p><u><b>License:</b></u></p>
- * <p>Version 1.0 </p>
- * 2023/05/20
- * <p>Attribution: <a href="https://creativecommons.org/licenses/by/4.0/">CC BY</a></p>
- * <p>Adrian Morgenthal <a href="https://github.com/Voraxx">Github</a></p>
  */
 
 public class BellmanFord {
@@ -80,7 +74,7 @@ public class BellmanFord {
         // Print the shortest distances
         System.out.println("Vertex\t\tDistance");
         for (int i = 0; i < numVertices; i++) {
-            System.out.println(i + "\t\t" + distances[i]);
+            System.out.println(i + "\t\t\t" + distances[i]);
         }
     }
 
