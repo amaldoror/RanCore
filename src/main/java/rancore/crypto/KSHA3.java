@@ -2,9 +2,10 @@ package rancore.crypto;
 import java.nio.ByteBuffer;
 import java.nio.charset.StandardCharsets;
 
+
 /**
  * <p><u><b>Class Name</b></u></p>
- * <p>NeuralNet</p>
+ * <p>KSHA3</p>
  *
  * <p><u><b>Description</b></u></p>
  *
@@ -32,10 +33,11 @@ import java.nio.charset.StandardCharsets;
  * It's important to note that the code is specific to the SHA-3-256 variant, where the hash size is 256 bits.
  * The constants and parameters used in the code are tailored for this specific variant.
  */
-
 public class KSHA3 {
     private static final int STATE_SIZE = 1600; // State size in bits
-    private static final int LANE_SIZE = 64; // Lane size in bits
+    private static final int RATE = 1088; // Rate for SHA3-256 (in bits)
+    private static final int CAPACITY = 512; // Capacity for SHA3-256 (in bits)
+    private static final int OUTPUT_LENGTH = 256 / 8; // Output length in bytes
 
     // Round-constants for Keccak-f
     private static final long[] ROUND_CONSTANTS = {
@@ -73,41 +75,89 @@ public class KSHA3 {
             {4, 0, 1, 2, 3}
     };
 
+    /**
+     * Calculates the hash value of the input string using the Keccak-f function.
+     *
+     * @param input The input string to be hashed.
+     * @return The hexadecimal string representing the hash value.
+     */
     public static String calculateHash(String input) {
         byte[] inputBytes = input.getBytes(StandardCharsets.UTF_8);
-        byte[] encrypted = keccakF(inputBytes);
+        byte[] paddedInput = padInput(inputBytes);
+        byte[] encrypted = keccakF(paddedInput);
         return bytesToHex(encrypted);
     }
 
-    static byte [] keccakF(byte[] state) {
-        int numRounds = 24; // Anzahl der Runden für SHA-3-256
 
-        long[] stateAsLongs = bytesToLongs(state);
-        long[][] lanes = reshapeToLanes(stateAsLongs);
-
-        for (int round = 0; round < numRounds; round++) {
-            theta(lanes);
-            rho(lanes);
-            pi(lanes);
-            chi(lanes);
-            iota(lanes, round);
+    private static byte[] padInput(byte[] input) {
+        int rateBytes = RATE / 8;
+        int inputLengthBytes = input.length;
+        int paddingLength = rateBytes - (inputLengthBytes % rateBytes);
+        if (paddingLength == 1) {
+            paddingLength += rateBytes;
         }
 
-        return longsToBytes(flattenLanes(lanes));
+        byte[] paddedInput = new byte[inputLengthBytes + paddingLength];
+        System.arraycopy(input, 0, paddedInput, 0, inputLengthBytes);
+        paddedInput[inputLengthBytes] = 0x06; // Domain separator for SHA3-256
+        paddedInput[paddedInput.length - 1] |= (byte) 0x80; // Last bit to 1
+
+        return paddedInput;
     }
 
-    private static long [] bytesToLongs(byte [] data) {
-        long[] longs = new long[data.length / 8];
-        ByteBuffer buffer = ByteBuffer.wrap(data);
+    /**
+     * Performs the Keccak-f operation on the input state.
+     *
+     * @param input The input byte array representing the state.
+     * @return The resulting byte array after applying Keccak-f.
+     */
 
-        for (int i = 0; i < longs.length; i++) {
-            longs[i] = buffer.getLong();
+    static byte[] keccakF(byte[] input) {
+        int rateBytes = RATE / 8;
+        long[] state = new long[STATE_SIZE / 64];
+
+        // Absorb input
+        for (int i = 0; i < input.length; i += rateBytes) {
+            for (int j = 0; j < rateBytes; j++) {
+                if (i + j < input.length) {
+                    state[j / 8] ^= ((long) (input[i + j] & 0xFF)) << (8 * (j % 8));
+                }
+            }
+            keccakFRound(state);
         }
 
-        return longs;
+        // Squeeze output
+        byte[] output = new byte[OUTPUT_LENGTH];
+        int offset = 0;
+        while (offset < output.length) {
+            for (int i = 0; i < rateBytes && offset < output.length; i++) {
+                output[offset++] = (byte) (state[i / 8] >> (8 * (i % 8)));
+            }
+            if (offset < output.length) {
+                keccakFRound(state);
+            }
+        }
+
+        return output;
     }
 
-    private static String bytesToHex(byte [] bytes) {
+    private static void keccakFRound(long[] state) {
+        for (int round = 0; round < 24; round++) {
+            theta(state);
+            rho(state);
+            pi(state);
+            chi(state);
+            iota(state, round);
+        }
+    }
+
+    /**
+     * Converts a byte array to a hexadecimal string.
+     *
+     * @param bytes The input byte array.
+     * @return The resulting hexadecimal string.
+     */
+    private static String bytesToHex(byte[] bytes) {
         StringBuilder sb = new StringBuilder();
         for (byte b : bytes) {
             sb.append(String.format("%02x", b));
@@ -115,94 +165,92 @@ public class KSHA3 {
         return sb.toString();
     }
 
-    private static byte [] longsToBytes(long [] longs) {
-        ByteBuffer buffer = ByteBuffer.allocate(longs.length * 8);
+    /**
+     * Applies the theta step of the Keccak-f function.
+     *
+     * @param state The 2D long array representing the state.
+     */
+    private static void theta(long[] state) {
+        long[] c = new long[5];
+        long[] d = new long[5];
 
-        for (long l : longs) {
-            buffer.putLong(l);
+        for (int x = 0; x < 5; x++) {
+            c[x] = state[x] ^ state[x + 5] ^ state[x + 10] ^ state[x + 15] ^ state[x + 20];
         }
 
-        return buffer.array();
-    }
-
-    private static long[][] reshapeToLanes(long[] state) {
-        int numLanes = STATE_SIZE / LANE_SIZE;
-        int laneSizeLongs = LANE_SIZE / 64; // Größe einer Lane in Longs
-        long[][] lanes = new long[numLanes][laneSizeLongs];
-        for (int i = 0; i < numLanes; i++) {
-            System.arraycopy(state, i * laneSizeLongs, lanes[i], 0, laneSizeLongs);
-        }
-
-        return lanes;
-    }
-
-    private static long[] flattenLanes(long[][] lanes) {
-        int numLanes = STATE_SIZE / LANE_SIZE;
-        long[] state = new long[STATE_SIZE / 8];
-        for (int i = 0; i < numLanes; i++) {
-            System.arraycopy(lanes[i], 0, state, i * (LANE_SIZE / 8), LANE_SIZE / 8);
-        }
-        return state;
-    }
-
-    private static void theta(long[][] lanes) {
-        int numLanes = STATE_SIZE / LANE_SIZE;
-        long[] c = new long[numLanes];
-
-        for (int x = 0; x < numLanes; x++) {
-            for (int y = 0; y < numLanes; y++) {
-                c[x] ^= lanes[y][x];
-            }
-        }
-
-        for (int x = 0; x < numLanes; x++) {
-            long dX = c[(x + 1) % numLanes] ^ rotateLeft(c[(x + 1) % numLanes], 1);
-            for (int y = 0; y < numLanes; y++) {
-                lanes[y][x] ^= dX;
-            }
-        }
-    }
-
-    private static void rho(long[][] lanes) {
-        for (int x = 1; x < 5; x++) {
+        for (int x = 0; x < 5; x++) {
+            d[x] = c[(x + 4) % 5] ^ rotateLeft(c[(x + 1) % 5], 1);
             for (int y = 0; y < 5; y++) {
-                lanes[y][x] = rotateLeft(lanes[y][x], RHO_OFFSETS[y][x]);
+                state[x + 5 * y] ^= d[x];
             }
         }
     }
 
-    private static void pi(long[][] lanes) {
-        int numLanes = STATE_SIZE / LANE_SIZE;
-        long[][] newLanes = new long[numLanes][];
-        for (int x = 0; x < numLanes; x++) {
-            newLanes[x] = new long[numLanes];
-            for (int y = 0; y < numLanes; y++) {
-                newLanes[x][y] = lanes[Y_COORDINATES[x][y]][X_COORDINATES[x][y]];
+    /**
+     * Applies the rho step of the Keccak-f function.
+     *
+     * @param state The 2D long array representing the state.
+     */
+    private static void rho(long[] state) {
+        for (int x = 0; x < 5; x++) {
+            for (int y = 0; y < 5; y++) {
+                state[x + 5 * y] = rotateLeft(state[x + 5 * y], RHO_OFFSETS[y][x]);
             }
         }
-        System.arraycopy(newLanes, 0, lanes, 0, numLanes);
     }
 
-    private static void chi(long[][] lanes) {
-        int numLanes = STATE_SIZE / LANE_SIZE;
+    /**
+     * Applies the pi step of the Keccak-f function.
+     *
+     * @param state The 2D long array representing the state.
+     */
+    private static void pi(long[] state) {
+        long[] tempState = new long[25];
+        for (int x = 0; x < 5; x++) {
+            for (int y = 0; y < 5; y++) {
+                int newX = Y_COORDINATES[x][y];
+                int newY = X_COORDINATES[x][y];
+                tempState[newX + 5 * newY] = state[x + 5 * y];
+            }
+        }
+        System.arraycopy(tempState, 0, state, 0, 25);
+    }
 
-        for (int y = 0; y < numLanes; y++) {
-            long[] c = new long[5];
+    /**
+     * Applies the chi step of the Keccak-f function.
+     *
+     * @param state The 2D long array representing the state.
+     */
+    private static void chi(long[] state) {
+        long[] tempState = new long[5];
+        for (int y = 0; y < 5; y++) {
+            System.arraycopy(state, y * 5, tempState, 0, 5);
             for (int x = 0; x < 5; x++) {
-                c[x] = lanes[y][x] ^ ((~lanes[y][(x + 1) % 5]) & lanes[y][(x + 2) % 5]);
-                lanes[y][x] = c[x];
+                state[x + 5 * y] = tempState[x] ^ ((~tempState[(x + 1) % 5]) & tempState[(x + 2) % 5]);
             }
         }
     }
 
-    private static void iota(long[][] lanes, int round) {
-        lanes[0][0] ^= ROUND_CONSTANTS[round];
+    /**
+     * Applies the iota step of the Keccak-f function.
+     *
+     * @param state The 2D long array representing the state.
+     * @param round The current round number.
+     */
+    private static void iota(long[] state, int round) {
+        state[0] ^= ROUND_CONSTANTS[round];
     }
 
+    /**
+     * Rotates a long value to the left by the specified offset.
+     *
+     * @param value The input long value.
+     * @param offset The number of bits to rotate.
+     * @return The resulting long value after rotation.
+     */
     private static long rotateLeft(long value, int offset) {
         return (value << offset) | (value >>> (64 - offset));
     }
-
 
 }
 

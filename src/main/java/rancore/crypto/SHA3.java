@@ -2,7 +2,7 @@ package rancore.crypto;
 
 import java.nio.charset.StandardCharsets;
 
-public class SHA3EncryptionExample {
+public class SHA3 {
     private static final int BLOCK_SIZE = 136;
     private static final int OUTPUT_SIZE = 256;
     private static final int STATE_SIZE = 1600;
