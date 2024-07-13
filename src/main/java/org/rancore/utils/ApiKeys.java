@@ -6,14 +6,14 @@ import java.util.Properties;
 
 public class ApiKeys {
     public static void main(String[] args) {
-        System.out.println(readApiKey("NASA_API_KEY"));
+        System.out.println("Dummy API key: " + readApiKey("DUMMY_API_KEY"));
     }
 
     public static String readApiKey(String keyName) {
         Properties properties = new Properties();
         String apiKey = null;
         try {
-            properties.load(new FileInputStream("config/api_keys.properties"));
+            properties.load(new FileInputStream("config/apikeys/api_keys.properties"));
             apiKey = properties.getProperty(keyName);
             if (apiKey == null) {
                 System.err.println("API Key with name '" + keyName + "' not found");

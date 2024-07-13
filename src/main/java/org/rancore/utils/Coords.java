@@ -6,7 +6,7 @@ import java.util.Properties;
 
 public class Coords {
     public static void main(String[] args) {
-        String coordsKey = "DIEDENHOFER_STR";
+        String coordsKey = "AREA_51";
         System.out.println("Coords for " + coordsKey + ": " + readCoordsKey(coordsKey));
     }
 
@@ -14,7 +14,7 @@ public class Coords {
         Properties properties = new Properties();
         String coords = "";
         try {
-            properties.load(new FileInputStream("config/coords.properties"));
+            properties.load(new FileInputStream("config/coords/coords.properties"));
             coords = properties.getProperty(coordsKey);
             if (coords == null) {
                 System.err.println("Coords with key '" + coordsKey + "' not found");
