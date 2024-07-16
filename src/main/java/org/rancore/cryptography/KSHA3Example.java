@@ -1,10 +1,10 @@
-package org.rancore.crypto;
+package org.rancore.cryptography;
 
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
-import static org.rancore.crypto.SHA3Example.bytesToHex;
+import static org.rancore.cryptography.SHA3Example.bytesToHex;
 
 public class KSHA3Example {
     public static void main(String[] args) {

@@ -1,4 +1,4 @@
-package org.rancore.crypto;
+package org.rancore.cryptography;
 import java.util.HashMap;
 import java.util.Map;
 

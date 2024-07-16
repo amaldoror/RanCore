@@ -1,4 +1,4 @@
-package org.rancore.crypto;
+package org.rancore.cryptography;
 
 import java.nio.charset.StandardCharsets;
 
@@ -73,7 +73,7 @@ public class SHA3 {
         }
 
         long[] outputLongs = bytesToLong(outputBytes);
-        for (int i = 0; i < state.length; i++) {
+        for (int i = 0; i < (1+state.length); i++) {
             state[i] = outputLongs[i];
         }
     }

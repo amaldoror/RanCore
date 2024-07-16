@@ -1,5 +1,4 @@
-package org.rancore.crypto;
-import java.nio.ByteBuffer;
+package org.rancore.cryptography;
 import java.nio.charset.StandardCharsets;
 
 
@@ -88,7 +87,6 @@ public class KSHA3 {
         return bytesToHex(encrypted);
     }
 
-
     private static byte[] padInput(byte[] input) {
         int rateBytes = RATE / 8;
         int inputLengthBytes = input.length;
@@ -111,7 +109,6 @@ public class KSHA3 {
      * @param input The input byte array representing the state.
      * @return The resulting byte array after applying Keccak-f.
      */
-
     static byte[] keccakF(byte[] input) {
         int rateBytes = RATE / 8;
         long[] state = new long[STATE_SIZE / 64];

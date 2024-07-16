@@ -1,4 +1,4 @@
-package org.rancore.riddle;
+package org.rancore.thread;
 
 import java.util.LinkedList;
 import java.util.Queue;
