@@ -4,7 +4,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
 
-public class Coords {
+public class CoordsHelper {
     public static void main(String[] args) {
         String coordsKey = "AREA_51";
         System.out.println("Coords for " + coordsKey + ": " + readCoordsKey(coordsKey));

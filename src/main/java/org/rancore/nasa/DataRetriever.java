@@ -8,12 +8,12 @@ import java.time.format.DateTimeFormatter;
 
 import com.fasterxml.jackson.databind.JsonNode;
 
-import org.rancore.utils.Files;
+import org.rancore.utils.FileHelper;
 
-import static org.rancore.utils.ApiKeys.readApiKey;
-import static org.rancore.utils.Files.saveToFile;
-import static org.rancore.utils.Json.formatJson;
-import static org.rancore.utils.Json.parseJson;
+import static org.rancore.utils.ApiKeyHelper.readApiKey;
+import static org.rancore.utils.FileHelper.saveToFile;
+import static org.rancore.utils.JsonHelper.formatJson;
+import static org.rancore.utils.JsonHelper.parseJson;
 
 public class DataRetriever {
     private static final String FILE_PATH_JSON = "json/";
@@ -54,7 +54,7 @@ public class DataRetriever {
                 System.out.println("Formatted time: " + formattedTime);
 
                 // Save JSON to file
-                saveToFile(readableOutput, FILE_PATH_JSON + "nasa_data_" + Files.generateTimestampForFilename() + ".json");
+                saveToFile(readableOutput, FILE_PATH_JSON + "nasa_data_" + FileHelper.generateTimestampForFilename() + ".json");
 
                 // Print readable output to console
                 System.out.println(readableOutput);
