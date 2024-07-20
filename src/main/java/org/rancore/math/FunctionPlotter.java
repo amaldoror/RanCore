@@ -3,17 +3,24 @@ package org.rancore.math;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.io.InputStream;
 
 import static org.rancore.math.MathParser.evaluate;
 
 public class FunctionPlotter extends JPanel {
+    private static final boolean DEBUG = true;
 
     private double scale = 1; // Initial scale factor
     private final List<Point> points = new ArrayList<>();
     private String function;
-    private static boolean debug = true;
+
+    private static final Color DARK_GRAY_01 = new Color(28,28,28);
+    private static final Font menuFont = loadCustomFont(14f);
+    private static final Font buttonFont = loadCustomFont(12f);
+    private static final Font labelFont = loadCustomFont(10f);
 
     public static void main(String[] args) {
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
@@ -47,27 +54,29 @@ public class FunctionPlotter extends JPanel {
         JButton addPointButton = new JButton("Add Point");
 
         // Create a custom font for buttons
-        Font buttonFont = new Font("Arial", Font.BOLD, 12);
+        Font buttonFont = loadCustomFont(12f);
+
+        panel.setBackground(DARK_GRAY_01);
 
         // Set colors and font for buttons
         resetButton.setBackground(Color.LIGHT_GRAY);
-        resetButton.setForeground(Color.BLACK);
+        resetButton.setForeground(DARK_GRAY_01);
         resetButton.setFont(buttonFont);
 
         zoomInButton.setBackground(Color.LIGHT_GRAY);
-        zoomInButton.setForeground(Color.BLACK);
+        zoomInButton.setForeground(DARK_GRAY_01);
         zoomInButton.setFont(buttonFont);
 
         zoomOutButton.setBackground(Color.LIGHT_GRAY);
-        zoomOutButton.setForeground(Color.BLACK);
+        zoomOutButton.setForeground(DARK_GRAY_01);
         zoomOutButton.setFont(buttonFont);
 
         plotButton.setBackground(Color.LIGHT_GRAY);
-        plotButton.setForeground(Color.BLACK);
+        plotButton.setForeground(DARK_GRAY_01);
         plotButton.setFont(buttonFont);
 
         addPointButton.setBackground(Color.LIGHT_GRAY);
-        addPointButton.setForeground(Color.BLACK);
+        addPointButton.setForeground(DARK_GRAY_01);
         addPointButton.setFont(buttonFont);
 
         // Add action listeners for buttons
@@ -76,12 +85,10 @@ public class FunctionPlotter extends JPanel {
             plotter.scale *= 1.2;
             plotter.repaint();
         });
-
         zoomOutButton.addActionListener(e -> {
             plotter.scale /= 1.2;
             plotter.repaint();
         });
-
         addPointButton.addActionListener(e -> {
             try {
                 int x = Integer.parseInt(xField.getText());
@@ -91,7 +98,6 @@ public class FunctionPlotter extends JPanel {
                 JOptionPane.showMessageDialog(frame, "Please enter valid integers for x and y.");
             }
         });
-
         plotButton.addActionListener(e -> {
             try {
                 String function = functionField.getText();
@@ -120,6 +126,7 @@ public class FunctionPlotter extends JPanel {
     }
 
     public FunctionPlotter() {
+
         setBackground(Color.DARK_GRAY);
 
         // Add mouse wheel listener for zooming
@@ -173,57 +180,67 @@ public class FunctionPlotter extends JPanel {
         editMenu.add(clearPointsItem);
 
         // View menu
-        JMenu viewMenu = new JMenu("View");
-        JMenuItem zoomInItem = new JMenuItem("Zoom In");
-        zoomInItem.addActionListener(e -> {
-            plotter.scale *= 1.2;
-            plotter.repaint();
-        });
-
-        JMenuItem zoomOutItem = new JMenuItem("Zoom Out");
-        zoomOutItem.addActionListener(e -> {
-            plotter.scale /= 1.2;
-            plotter.repaint();
-        });
-
-        JMenuItem resetViewItem = new JMenuItem("Reset View");
-        resetViewItem.addActionListener(e -> plotter.resetGraph());
-        viewMenu.add(zoomInItem);
-        viewMenu.add(zoomOutItem);
-        viewMenu.add(resetViewItem);
+        JMenu viewMenu = getViewMenu(plotter);
 
         // Add menus to menu bar
         menuBar.add(fileMenu);
         menuBar.add(editMenu);
         menuBar.add(viewMenu);
 
-        // Create a custom font
-        Font menuFont = new Font("Arial", Font.BOLD, 14);
-
         // Set colors and font for the menu bar
-        menuBar.setBackground(Color.LIGHT_GRAY);
-        menuBar.setForeground(Color.BLACK);
+        menuBar.setBackground(DARK_GRAY_01);
+        menuBar.setForeground(DARK_GRAY_01);
         menuBar.setFont(menuFont);
 
         // Set colors and font for each menu
-        fileMenu.setForeground(Color.BLUE);
+        fileMenu.setForeground(Color.WHITE);
+        fileMenu.setBackground(DARK_GRAY_01);
         fileMenu.setFont(menuFont);
-        editMenu.setForeground(Color.BLUE);
+
+        editMenu.setForeground(Color.WHITE);
+        editMenu.setBackground(DARK_GRAY_01);
         editMenu.setFont(menuFont);
-        viewMenu.setForeground(Color.BLUE);
+
+        viewMenu.setForeground(Color.WHITE);
+        viewMenu.setBackground(DARK_GRAY_01);
         viewMenu.setFont(menuFont);
 
         // Set colors and font for menu items
         exitItem.setBackground(Color.WHITE);
-        exitItem.setForeground(Color.BLACK);
+        exitItem.setForeground(DARK_GRAY_01);
         exitItem.setFont(menuFont);
 
         // Repeat for other menu items
         clearPointsItem.setBackground(Color.WHITE);
-        clearPointsItem.setForeground(Color.BLACK);
+        clearPointsItem.setForeground(DARK_GRAY_01);
         clearPointsItem.setFont(menuFont);
 
         return menuBar;
+    }
+
+    private static JMenu getViewMenu(FunctionPlotter plotter) {
+        JMenu viewMenu = new JMenu("View");
+        JMenuItem zoomInItem = new JMenuItem("Zoom In");
+        zoomInItem.setFont(menuFont);
+        zoomInItem.addActionListener(e -> {
+            plotter.scale *= 1.2;
+            plotter.repaint();
+        });
+
+        JMenuItem zoomOutItem = new JMenuItem("Zoom Out");
+        zoomOutItem.setFont(menuFont);
+        zoomOutItem.addActionListener(e -> {
+            plotter.scale /= 1.2;
+            plotter.repaint();
+        });
+
+        JMenuItem resetViewItem = new JMenuItem("Reset View");
+        resetViewItem.setFont(menuFont);
+        resetViewItem.addActionListener(e -> plotter.resetGraph());
+        viewMenu.add(zoomInItem);
+        viewMenu.add(zoomOutItem);
+        viewMenu.add(resetViewItem);
+        return viewMenu;
     }
 
     private void drawPoints(Graphics2D g2) {
@@ -352,6 +369,22 @@ public class FunctionPlotter extends JPanel {
         }
     }
 
+    private static Font loadCustomFont(float size) {
+        try {
+            // Load the font file from the resources folder
+            InputStream is = FunctionPlotter.class.getResourceAsStream("/fonts/ALTRONED.ttf");
+            assert is != null;
+            Font customFont = Font.createFont(Font.TRUETYPE_FONT, is);
+
+            // Return the font in the desired size
+            return customFont.deriveFont(size);
+        } catch (IOException | FontFormatException e) {
+
+            // Return a default font if the custom font fails to load
+            return new Font("Arial", Font.PLAIN, (int)size);
+        }
+    }
+
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
@@ -364,7 +397,7 @@ public class FunctionPlotter extends JPanel {
         int width = getWidth();
         int height = getHeight();
 
-        if(debug) drawSquared(g2, width, height);
+        if(DEBUG) drawSquared(g2, width, height);
 
         drawPoints(g2);
 
