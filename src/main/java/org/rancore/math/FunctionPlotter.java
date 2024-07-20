@@ -13,14 +13,20 @@ public class FunctionPlotter extends JPanel {
     private double scale = 1; // Initial scale factor
     private final List<Point> points = new ArrayList<>();
     private String function;
+    private static boolean debug = true;
 
-    // Main method to set up the frame
     public static void main(String[] args) {
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         BorderLayout layout = new BorderLayout();
         FunctionPlotter plotter = new FunctionPlotter();
 
         JFrame frame = new JFrame("Function Plotter");
+
+        // Create menu bar
+        JMenuBar menuBar = getjMenuBar(plotter);
+
+        // Set menu bar to frame
+        frame.setJMenuBar(menuBar);
 
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setLayout(layout);
@@ -31,7 +37,7 @@ public class FunctionPlotter extends JPanel {
 
         // Create a panel for the buttons and text fields
         JPanel panel = new JPanel();
-        JButton resetButton = new JButton("Reset Graph");
+        JButton resetButton = new JButton("Reset");
         JButton zoomInButton = new JButton("Zoom In");
         JButton zoomOutButton = new JButton("Zoom Out");
         JTextField functionField = new JTextField(10);
@@ -40,16 +46,42 @@ public class FunctionPlotter extends JPanel {
         JTextField yField = new JTextField(5);
         JButton addPointButton = new JButton("Add Point");
 
+        // Create a custom font for buttons
+        Font buttonFont = new Font("Arial", Font.BOLD, 12);
+
+        // Set colors and font for buttons
+        resetButton.setBackground(Color.LIGHT_GRAY);
+        resetButton.setForeground(Color.BLACK);
+        resetButton.setFont(buttonFont);
+
+        zoomInButton.setBackground(Color.LIGHT_GRAY);
+        zoomInButton.setForeground(Color.BLACK);
+        zoomInButton.setFont(buttonFont);
+
+        zoomOutButton.setBackground(Color.LIGHT_GRAY);
+        zoomOutButton.setForeground(Color.BLACK);
+        zoomOutButton.setFont(buttonFont);
+
+        plotButton.setBackground(Color.LIGHT_GRAY);
+        plotButton.setForeground(Color.BLACK);
+        plotButton.setFont(buttonFont);
+
+        addPointButton.setBackground(Color.LIGHT_GRAY);
+        addPointButton.setForeground(Color.BLACK);
+        addPointButton.setFont(buttonFont);
+
         // Add action listeners for buttons
         resetButton.addActionListener(e -> plotter.resetGraph());
         zoomInButton.addActionListener(e -> {
             plotter.scale *= 1.2;
             plotter.repaint();
         });
+
         zoomOutButton.addActionListener(e -> {
             plotter.scale /= 1.2;
             plotter.repaint();
         });
+
         addPointButton.addActionListener(e -> {
             try {
                 int x = Integer.parseInt(xField.getText());
@@ -59,6 +91,7 @@ public class FunctionPlotter extends JPanel {
                 JOptionPane.showMessageDialog(frame, "Please enter valid integers for x and y.");
             }
         });
+
         plotButton.addActionListener(e -> {
             try {
                 String function = functionField.getText();
@@ -124,55 +157,86 @@ public class FunctionPlotter extends JPanel {
         });
     }
 
-    @Override
-    protected void paintComponent(Graphics g) {
-        super.paintComponent(g);
-        Graphics2D g2 = (Graphics2D) g;
+    private static JMenuBar getjMenuBar(FunctionPlotter plotter) {
+        JMenuBar menuBar = new JMenuBar();
 
-        // Set rendering hints for better graphics quality
-        g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+        // File menu
+        JMenu fileMenu = new JMenu("File");
+        JMenuItem exitItem = new JMenuItem("Exit");
+        exitItem.addActionListener(e -> System.exit(0));
+        fileMenu.add(exitItem);
 
-        // Get the size of the drawing area
-        int width = getWidth();
-        int height = getHeight();
+        // Edit menu
+        JMenu editMenu = new JMenu("Edit");
+        JMenuItem clearPointsItem = new JMenuItem("Clear Points");
+        clearPointsItem.addActionListener(e -> plotter.clearPoints());
+        editMenu.add(clearPointsItem);
 
-        /*
-        // Draw the function y = x^2
-        g2.setColor(Color.RED);
-        for (int x = -width / 2; x < width / 2; x++) {
-            double scaledX = x / scale;
-            double scaledY = scaledX * scaledX;
+        // View menu
+        JMenu viewMenu = new JMenu("View");
+        JMenuItem zoomInItem = new JMenuItem("Zoom In");
+        zoomInItem.addActionListener(e -> {
+            plotter.scale *= 1.2;
+            plotter.repaint();
+        });
 
-            int x1 = width / 2 + (int)(scaledX * scale);
-            int y1 = height / 2 - (int)(scaledY * scale);
-            double nextScaledX = (x + 1) / scale;
-            double nextScaledY = nextScaledX * nextScaledX;
-            int x2 = width / 2 + (int)(nextScaledX * scale);
-            int y2 = height / 2 - (int)(nextScaledY * scale);
+        JMenuItem zoomOutItem = new JMenuItem("Zoom Out");
+        zoomOutItem.addActionListener(e -> {
+            plotter.scale /= 1.2;
+            plotter.repaint();
+        });
 
-            g2.drawLine(x1, y1, x2, y2);
-        }
+        JMenuItem resetViewItem = new JMenuItem("Reset View");
+        resetViewItem.addActionListener(e -> plotter.resetGraph());
+        viewMenu.add(zoomInItem);
+        viewMenu.add(zoomOutItem);
+        viewMenu.add(resetViewItem);
 
-         */
+        // Add menus to menu bar
+        menuBar.add(fileMenu);
+        menuBar.add(editMenu);
+        menuBar.add(viewMenu);
 
+        // Create a custom font
+        Font menuFont = new Font("Arial", Font.BOLD, 14);
+
+        // Set colors and font for the menu bar
+        menuBar.setBackground(Color.LIGHT_GRAY);
+        menuBar.setForeground(Color.BLACK);
+        menuBar.setFont(menuFont);
+
+        // Set colors and font for each menu
+        fileMenu.setForeground(Color.BLUE);
+        fileMenu.setFont(menuFont);
+        editMenu.setForeground(Color.BLUE);
+        editMenu.setFont(menuFont);
+        viewMenu.setForeground(Color.BLUE);
+        viewMenu.setFont(menuFont);
+
+        // Set colors and font for menu items
+        exitItem.setBackground(Color.WHITE);
+        exitItem.setForeground(Color.BLACK);
+        exitItem.setFont(menuFont);
+
+        // Repeat for other menu items
+        clearPointsItem.setBackground(Color.WHITE);
+        clearPointsItem.setForeground(Color.BLACK);
+        clearPointsItem.setFont(menuFont);
+
+        return menuBar;
+    }
+
+    private void drawPoints(Graphics2D g2) {
         // Draw points
         g2.setColor(Color.WHITE);
         for (Point point : points) {
-            g2.fillOval(point.x - 3, point.y - 3, 6, 6);
+            g2.fillOval(point.x - 3, point.y - 3, 3, 3);
         }
+    }
 
-        // Draw axis scale
-        g2.setColor(Color.GRAY);
-        for (int i = -width / 2; i < width / 2; i += 50) {
-            g2.drawLine(width / 2 + i, height / 2 - 5, width / 2 + i, height / 2 + 5);
-            g2.drawString(Integer.toString(i), width / 2 + i - 5, height / 2 + 20);
-        }
-        for (int i = -height / 2; i < height / 2; i += 50) {
-            g2.drawLine(width / 2 - 5, height / 2 - i, width / 2 + 5, height / 2 - i);
-            g2.drawString(Integer.toString(i), width / 2 + 10, height / 2 - i + 5);
-        }
-
+    private static void drawAxis(Graphics2D g2, int height, int width) {
         // Draw x- and y-axis with arrows
+        g2.setColor(Color.GRAY);
         g2.drawLine(0, height / 2, width, height / 2); // x-axis
         g2.drawLine(width / 2, 0, width / 2, height); // y-axis
 
@@ -185,12 +249,29 @@ public class FunctionPlotter extends JPanel {
         // Draw labels for the axes
         g2.drawString("X", width - 15, height / 2 - 5);
         g2.drawString("Y", width / 2 + 5, 15);
+    }
 
+    private static void drawAxisScale(Graphics2D g2, int width, int height) {
+        // Draw axis scale
+        g2.setColor(Color.GRAY);
+        for (int i = -width / 2; i < width / 2; i += 50) {
+            g2.drawLine(width / 2 + i, height / 2 - 5, width / 2 + i, height / 2 + 5);
+            g2.drawString(Integer.toString(i), width / 2 + i - 5, height / 2 + 20);
+        }
+        for (int i = -height / 2; i < height / 2; i += 50) {
+            g2.drawLine(width / 2 - 5, height / 2 - i, width / 2 + 5, height / 2 - i);
+            g2.drawString(Integer.toString(i), width / 2 + 10, height / 2 - i + 5);
+        }
+    }
+
+    private void drawFunction(Graphics2D g2, int width, int height) {
         // Draw the function if it's set
         if (function != null && !function.isEmpty()) {
             g2.setColor(Color.RED);
+
             int prevX = -1, prevY = -1;
-            for (int x = 0; x < width; x++) {
+
+            for (int x = -width /2; x < width; x++) {
                 double xValue = (x - width / 2.0) / scale;
                 try {
                     double yValue = evaluate(function.replace("x", String.valueOf(xValue)));
@@ -207,14 +288,30 @@ public class FunctionPlotter extends JPanel {
         }
     }
 
-    // Method to reset the graph
+    private void drawSquared(Graphics2D g2, int width, int height) {
+        // Draw the function y = x^2
+        g2.setColor(Color.RED);
+        for (int x = -width / 2; x < width / 2; x++) {
+            double scaledX = x / scale;
+            double scaledY = scaledX * scaledX;
+
+            int x1 = width / 2 + (int)(scaledX * scale);
+            int y1 = height / 2 - (int)(scaledY * scale);
+            double nextScaledX = (x + 1) / scale;
+            double nextScaledY = nextScaledX * nextScaledX;
+            int x2 = width / 2 + (int)(nextScaledX * scale);
+            int y2 = height / 2 - (int)(nextScaledY * scale);
+
+            g2.drawLine(x1, y1, x2, y2);
+        }
+    }
+
     public void resetGraph() {
         points.clear();
-        scale = 20;
+        scale = 1;
         repaint();
     }
 
-    // Method to add a point based on x and y values
     public void addPoint(int x, int y) {
         int width = getWidth();
         int height = getHeight();
@@ -224,8 +321,59 @@ public class FunctionPlotter extends JPanel {
         repaint();
     }
 
+    public void clearPoints() {
+        points.clear();
+        repaint();
+    }
+    
     public void setFunction(String function) {
         this.function = function;
         repaint();
+    }
+
+    private void drawGrid(Graphics2D g2, int width, int height) {
+        g2.setColor(new Color(50, 50, 50));  // Dark gray color for the grid
+        g2.setStroke(new BasicStroke(0.5f));  // Thin lines for the grid
+
+        // Draw vertical lines
+        for (int x = -width / 2; x < width; x += (int) (10 * scale)) {
+            g2.drawLine(x, 0, x, height);
+        }
+        for (int x = -width / 2; x > 0; x -= (int) (10 * scale)) {
+            g2.drawLine(x, 0, x, height);
+        }
+
+        // Draw horizontal lines
+        for (int y = height / 2; y < height; y += (int) (10 * scale)) {
+            g2.drawLine(0, y, width, y);
+        }
+        for (int y = height / 2; y > 0; y -= (int) (10 * scale)) {
+            g2.drawLine(0, y, width, y);
+        }
+    }
+
+    @Override
+    protected void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        Graphics2D g2 = (Graphics2D) g;
+
+        // Set rendering hints for better graphics quality
+        g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+
+        // Get the size of the drawing area
+        int width = getWidth();
+        int height = getHeight();
+
+        if(debug) drawSquared(g2, width, height);
+
+        drawPoints(g2);
+
+        drawGrid(g2, width, height);
+
+        drawAxis(g2, height, width);
+
+        drawAxisScale(g2, width, height);
+
+        drawFunction(g2, width, height);
     }
 }
