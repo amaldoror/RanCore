@@ -1,17 +1,10 @@
 package org.rancore.javadoc;
 
-/**
- * <h1>Heading H1</h1>
- * <h2>Heading H2</h2>
- * <h3>Heading H3</h3>
- * <p>This class represents a simple example of using HTML tags in JavaDocs.</p>
- * <p>
- * <b>bold</b>
- * <i>italic</i>
- * <u>underline</u>
- * </p>
- */
+
 class Template {
+
+    private static final int n = 1;
+    private static final String s = "String";
 
     /**
      * <p><u><b>Class name</b></u></p>
@@ -24,6 +17,46 @@ class Template {
     private static class LoremClass {}
 
     /**
+     * Show the value of variables:<br>
+     * int n = {@value n}<br>
+     * String s = {@value s}
+     */
+    private static void value() {}
+
+    /**
+     * Link to class {@link Template}.<br>
+     * Plain link to class {@linkplain Template}.<br>
+     */
+    private static void link() {}
+
+    /**
+     * Method throwing an exception
+     * @throws Exception This is an exception.
+     */
+    private static void throwException () throws Exception {}
+
+    /**
+     * Method with parameters
+     * @param parameterA This is an integer.
+     * @param parameterB This is a String.
+     */
+    private static void method (int parameterA, String parameterB) {}
+
+    /**
+     * <b>bold</b>
+     * <i>italic</i>
+     * <u>underline</u>
+     */
+    private static void text() {}
+
+    /**
+     * <h1>Heading H1</h1>
+     * <h2>Heading H2</h2>
+     * <h3>Heading H3</h3>
+     */
+    private static void heading() {}
+
+    /**
      * <p>Block of preformatted text:</p>
      * <pre>
      * public static void main(String[] args) {
@@ -34,12 +67,13 @@ class Template {
     private static void preformattedText(){}
 
     /**
-     * <a href="www.github.com/amaldoror">Link</a>
+     * <a href="www.github.com/amaldoror">URL</a>
      */
-    private static void link(){}
+    private static void url(){}
 
     /**
-     * <code>inline code</code>
+     * <code>code</code><br>
+     * {@code equivalent}
      */
     private static void inlineCode(){}
 
@@ -101,4 +135,16 @@ class Template {
      * </table>
      */
     private static void table(){}
+
+    /**
+     * @see String#equals(Object) equals
+     * @see #n
+     * @see #method(int, String)
+     */
+    private static void see(){}
+
+    /**
+     * @deprecated Replaced by {@link Object}
+     */
+    private static class DeprecatedClass{}
 }
