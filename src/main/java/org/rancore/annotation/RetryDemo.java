@@ -1,37 +1,47 @@
 package org.rancore.annotation;
 
-import java.lang.reflect.Proxy;
 import java.util.Random;
 
-public class RetryDemo {
+/**
+ * This class demonstrates how to use the {@link Retry} annotation.
+ *
+ *
+ */
+public class RetryDemo implements IRetry {
     private static final Random random = new Random();
 
-    public interface RetryInterface {
-        void retryMethod() throws Exception;
-    }
 
-    public static class RetryImplementation implements RetryInterface {
-        @Retry(maxAttempts = 10, delay = 2000)
-        public void retryMethod() throws Exception {
-            if (random.nextDouble() < 0.5) {  // 50% Chance auf Fehler
-                throw new Exception("Operation failed");
-            }
-            System.out.println("Operation successful!");
+    /**
+     * Implementation of the method to retry. Should be declared in an interface.
+     * The class that defines the method must implement that interface.
+     * @throws RetryFailedException Exception when the operation fails after a number of attempts.
+     */
+    @Override
+    @Retry(maxAttempts = 10, delay = 2000)
+    public void retryMethod() throws RetryFailedException {
+        if (random.nextDouble() < 0.9) {  // 50% Chance auf Fehler
+            throw new RetryFailedException();
         }
+        System.out.println("Operation successful!");
     }
 
-    public static void main(String[] args) throws Exception {
-        RetryInterface implementation = new RetryImplementation();
-        RetryInterface proxy = (RetryInterface) Proxy.newProxyInstance(
-                RetryDemo.class.getClassLoader(),
-                new Class<?>[] { RetryInterface.class },
-                new RetryHandler(implementation)
-        );
+
+    /**
+     * <p>Demonstration of usage:</p>
+     * <ul>
+     *     <li>Create a proxy of the class that defines the method to retry.</li>
+     *     <li>Call method in a try-catch block</li>
+     *     <li>Catch {@link RetryFailedException}</li>
+     * </ul>
+     * @param args args
+     */
+    public static void main(String[] args) {
+        IRetry retryService = RetryHandler.createProxy(new RetryDemo(), IRetry.class);
 
         try {
-            proxy.retryMethod();
-        } catch (Exception e) {
-            System.out.println("Operation ultimately failed after all attempts: " + e.getMessage());
+            retryService.retryMethod();
+        } catch (RetryFailedException e) {
+            System.err.println(e.getMessage());
         }
     }
 }

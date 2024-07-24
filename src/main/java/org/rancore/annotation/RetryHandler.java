@@ -1,21 +1,10 @@
 package org.rancore.annotation;
 
 import java.lang.reflect.InvocationHandler;
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.lang.reflect.Proxy;
 
-/**
- * <p>Ein InvocationHandler, der die Ausführungszeit von Methoden misst und protokolliert,
- * die mit der {@Retry} Annotation versehen sind.</p>
- *
- * <p>Dieser Handler kann verwendet werden, um ein Proxy-Objekt zu erstellen, das
- * die Ausführungszeit von annotierten Methoden automatisch misst und protokolliert.</p>
- *
- * <p><b>Verwendung:</b></p>
- * <code>
- * IMyInterface proxy = RetryHandler.createProxy(myObject, IMyInterface.class);<br>
- * proxy.someMethod(); // Ausführungszeit wird gemessen und protokolliert
- * </code>
- */
 public class RetryHandler implements InvocationHandler {
     private final Object target;
 
@@ -31,16 +20,45 @@ public class RetryHandler implements InvocationHandler {
             while (attempts < retry.maxAttempts()) {
                 try {
                     return method.invoke(target, args);
-                } catch (Exception e) {
+                } catch (InvocationTargetException e) {
                     attempts++;
-                    if (attempts >= retry.maxAttempts()) {
-                        throw e.getCause();
+                    Throwable cause = e.getCause();
+                    if (cause instanceof RetryFailedException) {
+                        RetryFailedException rfe = (RetryFailedException) cause;
+                        rfe.setAttempts(attempts);
+                        if (attempts >= retry.maxAttempts()) {
+                            throw rfe;
+                        }
+                    } else {
+                        throw cause;
                     }
                     Thread.sleep(retry.delay());
                 }
             }
         }
-        // Wenn keine @Retry-Annotation vorhanden ist, rufen wir die Methode einfach auf
+        // If no @Retry annotation is present, we simply call the method
         return method.invoke(target, args);
+    }
+
+    /**
+     * Erstellt ein Proxy-Objekt, das die Retry-Annotation verarbeitet.
+     *
+     * @param target Das Zielobjekt, dessen Methoden annotiert sind.
+     * @param interfaceType Das Interface, das das Zielobjekt implementiert
+     * @param <T> Der Typ des Interfaces
+     * @return Ein Proxy-Objekt, das die Annotation verarbeitet
+     */
+    public static <T> T createProxy(T target, Class<T> interfaceType) {
+        Object proxy = Proxy.newProxyInstance(
+                interfaceType.getClassLoader(),
+                new Class<?>[] { interfaceType },
+                new RetryHandler(target)
+        );
+
+        if (interfaceType.isInstance(proxy)) {
+            return interfaceType.cast(proxy);
+        } else {
+            throw new IllegalStateException("Proxy does not implement the expected interface");
+        }
     }
 }
