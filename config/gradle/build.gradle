@@ -56,6 +56,8 @@ publishing {
     }
 }
 
+//-------------------------------- Custom tasks --------------------------------//
+
 tasks.register('javadocJar', Jar) {
     classifier = 'javadoc'
     from javadoc
@@ -64,4 +66,43 @@ tasks.register('javadocJar', Jar) {
 tasks.register('sourcesJar', Jar) {
     classifier = 'sources'
     from sourceSets.main.allSource
+}
+
+tasks.register('createPythonEnv', Exec) {
+    description = 'Create Python virtual environment'
+    group = 'Custom'
+
+    commandLine 'python', '-m', 'venv', 'venv'
+}
+
+tasks.register('installPythonDependencies', Exec) {
+    dependsOn createPythonEnv
+    description = 'Install Python dependencies'
+    group = 'Custom'
+
+    // Pfad zum Python-Interpreter in der virtuellen Umgebung
+    def pythonPath = 'venv\\Scripts\\python'  // Windows
+    // def pythonPath = 'venv/bin/python'  // Linux
+    commandLine pythonPath, '-m', 'pip', 'install', '-r', 'requirements.txt'
+}
+
+tasks.register('runPythonScript', Exec) {
+    dependsOn installPythonDependencies
+    description = 'Run ShorsAlgorithm'
+    group = 'Custom'
+
+    // Pfad zum Python-Interpreter in der virtuellen Umgebung
+    def pythonPath = 'venv\\Scripts\\python'  // Windows
+    // def pythonPath = 'venv/bin/python'  // Linux
+
+    def scriptPath = file('src/main/python/org.rancore/quantum/ShorsAlgorithm.py').absolutePath
+    commandLine pythonPath, scriptPath
+}
+
+sourceSets {
+    main {
+        resources {
+            srcDir 'src/main/python'
+        }
+    }
 }
