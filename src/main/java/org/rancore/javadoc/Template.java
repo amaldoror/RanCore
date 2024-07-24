@@ -143,6 +143,7 @@ class Template {
      */
     private static void see(){}
 
+    @Deprecated
     /**
      * @deprecated Replaced by {@link Object}
      */
