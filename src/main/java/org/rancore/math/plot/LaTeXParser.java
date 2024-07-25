@@ -1,6 +1,6 @@
 // -*- coding: utf-8 -*-
 
-package org.rancore.math;
+package org.rancore.math.plot;
 
 import java.util.*;
 import java.util.regex.*;

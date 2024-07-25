@@ -1,4 +1,4 @@
-package org.rancore.math;
+package org.rancore.math.plot;
 
 import java.util.*;
 
@@ -8,7 +8,8 @@ public class MathParser {
 
     public static double evaluate(String expression) {
         Queue<String> tokens = tokenize(expression);
-        Node root = parse(tokens);
+        //Node root = parse(tokens);
+        String root = LaTeXParser.parse(String.valueOf(tokens));
         return evaluate(root);
     }
 

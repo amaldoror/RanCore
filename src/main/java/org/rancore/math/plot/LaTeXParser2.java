@@ -1,4 +1,4 @@
-package org.rancore.math;
+package org.rancore.math.plot;
 
 import uk.ac.ed.ph.snuggletex.*;
 
