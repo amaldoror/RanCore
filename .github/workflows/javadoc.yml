@@ -27,8 +27,13 @@ jobs:
 
       - name: Copy Javadoc to Jekyll Directory
         run: |
-          mkdir -p jekyll-site/docs
-          cp -r ./build/docs/javadoc/* jekyll-site/docs/
+          mkdir -p jekyll-site/docs/javadoc
+          cp -r ./build/docs/javadoc/* jekyll-site/docs/javadoc/
+
+      - name: Copy Jekyll files
+        run: |
+          cp -r ghpage/* ./jekyll-site/
+          cp ghpage/_config.yml ./jekyll-site/
 
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
@@ -40,7 +45,7 @@ jobs:
 
       - name: Build Jekyll site
         run: |
-          cd ghpage
+          cd jekyll-site
           bundle install
           bundle exec jekyll build
 
@@ -48,4 +53,4 @@ jobs:
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./ghpage/_site
+          publish_dir: ./jekyll-site/_site
