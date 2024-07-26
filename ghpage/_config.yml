@@ -7,7 +7,7 @@ url: "https://amaldoror.github.io/RanCore"
 github_username:  amaldoror
 
 # Build settings
-theme: minima
+theme: midnight
 plugins:
   - jekyll-feed
 
