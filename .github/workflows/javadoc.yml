@@ -27,7 +27,7 @@ jobs:
 
       - name: Copy Javadoc to Jekyll Directory
         run: |
-          mkdir -p jekyll-site/docs/javadoc
+          mkdir -p ghpage/docs/javadoc
           cp -r ./build/docs/javadoc/* ghpage/docs/javadoc/
 
       - name: Copy Jekyll files
