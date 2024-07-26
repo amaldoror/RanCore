@@ -1,0 +1,5 @@
+theme: jekyll-theme-cayman
+title: My Documentation
+description: My project’s documentation site
+baseurl: "/"
+url: "https://amaldoror.github.io/RanCore"
