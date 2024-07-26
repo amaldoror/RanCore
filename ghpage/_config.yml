@@ -10,7 +10,6 @@ github_username:  amaldoror
 theme: minima
 plugins:
   - jekyll-feed
-  - jekyll-sitemap
 
 # Optional configurations
 markdown: kramdown
