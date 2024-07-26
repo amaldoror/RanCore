@@ -9,11 +9,6 @@ import java.lang.annotation.Target;
  * Diese Annotation wird verwendet, um die Ausführungszeit einer Methode zu messen und zu protokollieren.
  * Sie kann auf Methoden angewendet werden und benötigt einen Proxy, um die Funktionalität zu implementieren.<br>
  * <br>
- * <p>Verwendung:</p>
- * {@LogExecTime} <br>
- * public void someMethod() { <br>
- * // Methodeninhalt <br>
- * }<br>
  * <p>Die Ausführungszeit wird in Millisekunden gemessen und in der Konsole ausgegeben.</p>
  */
 @Retention(RetentionPolicy.RUNTIME)
