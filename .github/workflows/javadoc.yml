@@ -23,7 +23,7 @@ jobs:
         uses: gradle/gradle-build-action@v2
 
       - name: Generate Javadoc
-        run: gradle javadoc
+        run: ./gradlew javadoc
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
