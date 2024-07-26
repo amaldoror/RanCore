@@ -3,7 +3,8 @@
 # To modify the layout, see https://jekyllrb.com/docs/themes/#overriding-theme-defaults
 
 layout: home
-title: RanCore Docs Home
+title: RanCore Documentation
 ---
 
-Welcome to the RanCore Documentation. Here you can find information about the project and access the [JavaDoc](/javadoc/).
+Welcome to the RanCore Documentation. <br>
+Here you can find information about the project and access the [JavaDoc](/RanCore/javadoc/).<br>

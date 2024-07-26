@@ -3,7 +3,7 @@ email: adrian.morgenthal92@gmail.com
 description: RanCore Documentation generated with JavaDoc and github actions.
 baseurl: "/RanCore"
 url: "https://amaldoror.github.io/RanCore"
-# twitter_username: jekyllrb
+# twitter_username:
 github_username:  amaldoror
 
 # Build settings
