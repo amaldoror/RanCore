@@ -25,7 +25,7 @@ jobs:
       - name: Generate Javadoc
         run: |
           mkdir -p doc
-          javadoc -d doc -sourcepath ./src -subpackages org.rancore -verbose
+          javadoc -d doc -sourcepath src/main/java -subpackages org.rancore -verbose
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
