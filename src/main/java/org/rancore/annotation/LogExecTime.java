@@ -10,7 +10,7 @@ import java.lang.annotation.Target;
  * Sie kann auf Methoden angewendet werden und benötigt einen Proxy, um die Funktionalität zu implementieren.<br>
  * <br>
  * <p>Verwendung:</p>
- * @ LogExecTime <br>
+ * {@LogExecTime} <br>
  * public void someMethod() { <br>
  * // Methodeninhalt <br>
  * }<br>
