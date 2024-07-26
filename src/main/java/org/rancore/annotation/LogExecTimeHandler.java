@@ -6,7 +6,7 @@ import java.lang.reflect.Proxy;
 
 /**
  * <p>Ein InvocationHandler, der die Ausführungszeit von Methoden misst und protokolliert,
- * die mit der {@LogExecTime} Annotation versehen sind.</p>
+ * die mit der LogExecTime Annotation versehen sind.</p>
  *
  * <p>Dieser Handler kann verwendet werden, um ein Proxy-Objekt zu erstellen, das
  * die Ausführungszeit von annotierten Methoden automatisch misst und protokolliert.</p>
