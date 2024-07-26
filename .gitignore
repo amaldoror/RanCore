@@ -1,9 +1,6 @@
 ### Gradle ###
 .gradle
-/gradle
 /.idea
-/gradlew
-/gradlew.bat
 /settings.gradle
 
 build/
