@@ -19,13 +19,16 @@ jobs:
           java-version: '20'
           distribution: 'adopt'
 
-      - name: List source directory
-        run: ls -R src
+      - name: Download dependencies
+        run: |
+          mkdir -p lib
+          wget https://repo1.maven.org/maven2/com/fasterxml/jackson/core/jackson-databind/2.13.0/jackson-databind-2.13.0.jar -O lib/jackson-databind-2.13.0.jar
+          wget https://repo1.maven.org/maven2/uk/ac/ed/ph/snuggletex/snuggletex-core/1.2.2/snuggletex-core-1.2.2.jar -O lib/snuggletex-core-1.2.2.jar
 
       - name: Generate Javadoc
         run: |
           mkdir -p doc
-          javadoc -d doc -sourcepath src/main/java -subpackages org.rancore -verbose
+          javadoc -d doc -sourcepath src/main/java -subpackages org.rancore -classpath lib/* -verbose
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
