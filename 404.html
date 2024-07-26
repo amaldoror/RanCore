@@ -3,9 +3,9 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.8.0 -->
-<title>RanCore Documentation | RanCore Documentation generated with JavaDoc and github actions.</title>
+<title>404: Page Not Found | RanCore Documentation</title>
 <meta name="generator" content="Jekyll v4.3.3" />
-<meta property="og:title" content="RanCore Documentation" />
+<meta property="og:title" content="404: Page Not Found" />
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="RanCore Documentation generated with JavaDoc and github actions." />
 <meta property="og:description" content="RanCore Documentation generated with JavaDoc and github actions." />
@@ -14,9 +14,9 @@
 <meta property="og:site_name" content="RanCore Documentation" />
 <meta property="og:type" content="website" />
 <meta name="twitter:card" content="summary" />
-<meta property="twitter:title" content="RanCore Documentation" />
+<meta property="twitter:title" content="404: Page Not Found" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebPage","description":"RanCore Documentation generated with JavaDoc and github actions.","headline":"RanCore Documentation","url":"https://amaldoror.github.io/RanCore/RanCore/404.html"}</script>
+{"@context":"https://schema.org","@type":"WebPage","description":"RanCore Documentation generated with JavaDoc and github actions.","headline":"404: Page Not Found","url":"https://amaldoror.github.io/RanCore/RanCore/404.html"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/RanCore/assets/main.css"><link type="application/atom+xml" rel="alternate" href="https://amaldoror.github.io/RanCore/RanCore/feed.xml" title="RanCore Documentation" /></head>
 <body><header class="site-header" role="banner">
@@ -48,6 +48,29 @@
     line-height: 1;
     letter-spacing: -1px;
   }
+  p {
+    font-size: 1.2em;
+  }
+  .search-box {
+    margin: 20px auto;
+    max-width: 400px;
+  }
+  input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    font-size: 1em;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+  }
+  .button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 1em;
+    background-color: #0073e6;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 4px;
+  }
 </style>
 
 <div class="container">
@@ -55,7 +78,28 @@
 
   <p><strong>Page not found :(</strong></p>
   <p>The requested page could not be found.</p>
+
+  <div class="search-box">
+    <label for="searchInput"></label><input type="text" id="searchInput" placeholder="Search documentation...">
+  </div>
+
+  <a href="/RanCore/" class="button">Go to Home</a>
 </div>
+
+<script>
+  document.getElementById('searchInput').addEventListener('input', function() {
+    let filter = this.value.toUpperCase();
+    let docContent = document.querySelectorAll('main');
+
+    docContent.forEach(function(content) {
+      if (content.innerText.toUpperCase().indexOf(filter) > -1) {
+        content.style.display = '';
+      } else {
+        content.style.display = 'none';
+      }
+    });
+  });
+</script>
 
       </div>
     </main><footer class="site-footer h-card">
