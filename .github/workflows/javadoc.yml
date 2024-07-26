@@ -30,11 +30,6 @@ jobs:
           mkdir -p ghpage/docs/javadoc
           cp -r ./build/docs/javadoc/* ghpage/docs/javadoc/
 
-      - name: Copy Jekyll files
-        run: |
-          cp -r ghpage/* ./jekyll-site/
-          cp ghpage/_config.yml ./jekyll-site/
-
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
