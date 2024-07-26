@@ -10,7 +10,6 @@ import java.lang.reflect.Proxy;
  *
  * <p>Dieser Handler kann verwendet werden, um ein Proxy-Objekt zu erstellen, das
  * die Ausführungszeit von annotierten Methoden automatisch misst und protokolliert.</p>
- *
  * <p><b>Verwendung:</b></p>
  * <code>
  * IMyInterface proxy = LogExecTimeHandler.createProxy(myObject, IMyInterface.class);<br>
