@@ -7,4 +7,4 @@ title: RanCore Documentation
 ---
 
 Welcome to the RanCore Documentation. <br>
-Here you can find information about the project and access the [JavaDoc](/RanCore/javadoc/).<br>
+Here you can find information about the project and access the [Documentation](/RanCore/javadoc/).<br>

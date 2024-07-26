@@ -1,23 +1,51 @@
 <!-- _layouts/javadoc.html -->
 <!DOCTYPE html>
-<html>
+<html lang="en-EN">
 <head>
+    <meta name="author" content="Adrian Morgenthal">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="RanCore Library">
+    <meta name="keywords" content="keyword1, keyword2, keyword3">
     <title>{{ page.title }}</title>
     <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/themes/prism.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/prism.min.js"></script>
+
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-XXXXX-Y"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-XXXXX-Y');
+    </script>
+
 </head>
 <body>
+
 <header>
     <h1>{{ site.title }}</h1>
-    <nav>
-        <a href="{{ site.baseurl }}/">Home</a>
+    <nav aria-label="Main Navigation">
+        <input type="text" id="searchInput" placeholder="Search documentation...">
         <a href="{{ site.baseurl }}{{ site.javadoc.path }}">JavaDoc</a>
+        <a href="{{ site.baseurl }}/">Home</a>
+        <button id="darkModeToggle">Dark</button>
     </nav>
 </header>
+
 <main>
+    <div id="toc"></div>
     {{ content }}
+    <div id="feedback">
+        <h3>Feedback</h3>
+        <p>Found an issue? <a href="https://github.com/yourusername/yourrepo/issues">Report it on GitHub</a></p>
+    </div>
+    <button id="backToTop" title="Go to top">Top</button>
 </main>
 <footer>
     <p>&copy; {{ site.time | date: "%Y" }} {{ site.title }}</p>
+    <p><a href="/sitemap.xml">Sitemap</a></p>
 </footer>
+<script src="{{ '/assets/js/main.js' | relative_url }}"></script>
 </body>
 </html>

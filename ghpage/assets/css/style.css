@@ -5,6 +5,12 @@ body {
     color: #333;
     margin: 0;
     padding: 0;
+    transition: background-color 0.5s, color 0.5s;
+}
+
+body.dark-mode {
+    background-color: #333;
+    color: #fff;
 }
 
 header {
@@ -38,6 +44,9 @@ main {
     margin: 0 auto;
 }
 
+
+
+/* Add more dark mode styles as needed */
 footer {
     background-color: #f1f1f1;
     padding: 1rem;
