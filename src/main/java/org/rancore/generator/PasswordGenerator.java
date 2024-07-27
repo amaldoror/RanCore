@@ -17,6 +17,8 @@ public class PasswordGenerator {
 
         String password = generatePassword(passwordLength, seed, true, true, true, true);
         System.out.println("Generated Password: " + password);
+        String password2 = generatePassword(passwordLength, null, true, true, true, true);
+        System.out.println("Generated Password2: " + password2);
     }
 
     public static String generatePassword(int length, Long seed, boolean useLower, boolean useUpper, boolean useDigit, boolean useSpecial) {

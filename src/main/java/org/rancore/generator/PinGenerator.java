@@ -11,6 +11,8 @@ public class PinGenerator {
 
         String pin = generatePin(pinLength, seed);
         System.out.println("Generated PIN: " + pin);
+        String pin2 = generatePin(pinLength, null);
+        System.out.println("Generated PIN2: " + pin2);
     }
 
     public static String generatePin(int length, Long seed) {
