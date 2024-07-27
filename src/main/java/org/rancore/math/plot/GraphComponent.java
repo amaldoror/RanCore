@@ -1,5 +1,7 @@
 package org.rancore.math.plot;
 
+import org.rancore.math.Erathostenes;
+
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -79,6 +81,20 @@ public class GraphComponent {
                 } catch (Exception e) {
                     // Skip points where the function is undefined
                 }
+            }
+        }
+    }
+
+    static void drawPrimes(Graphics2D g2, int width, int height) {
+        g2.setColor(Color.RED);
+        int n = 300;
+        boolean[] primes = Erathostenes.sieve(n);
+        for (int i = 2; i <= n; i++) {
+            if (primes[i]) {
+
+                g2.drawLine(i, height /2, width+i, height / 2*i);
+                g2.drawLine(i, height *2, width+i, height * 2*i);
+                System.out.print(i + " ");
             }
         }
     }

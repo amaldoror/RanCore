@@ -64,6 +64,7 @@ public class FunctionPlotter extends JPanel {
         drawGrid(g2, width, height);
         drawAxis(g2, height, width);
         drawAxisScale(g2, width, height, scaleX, scaleY, rangeX, rangeY);
+        drawPrimes(g2, width, height);
         drawSquared(g2, width, height);
         drawFunction(g2, width, height);
     }

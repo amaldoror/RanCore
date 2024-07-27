@@ -33,7 +33,7 @@ public class Erathostenes {
     }
 
     public static void main(String[] args) {
-        int n = 300;
+        int n = 3000;
         boolean[] primes = sieve(n);
         System.out.print("Primzahlen bis " + n + ": ");
         for (int i = 2; i <= n; i++) {
