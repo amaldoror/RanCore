@@ -4,6 +4,7 @@ org.rancore.annotation
 org.rancore.cryptography
 org.rancore.game
 org.rancore.generator
+org.rancore.leetcode
 org.rancore.math
 org.rancore.math.plot
 org.rancore.nasa
