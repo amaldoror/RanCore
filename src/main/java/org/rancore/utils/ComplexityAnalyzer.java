@@ -1,5 +1,7 @@
 package org.rancore.utils;
 
+import java.util.Arrays;
+
 public class ComplexityAnalyzer {
 
     // Interface for a method to analyze
@@ -29,11 +31,17 @@ public class ComplexityAnalyzer {
     }
 
     public static void main(String[] args) {
-        // Example usage:
-        analyze(() -> sumArray(new int[]{1, 2, 3, 4, 5}));
-        analyze(() -> sumArray(new int[]{1,2,3,4,5,6,7,8,9,10}));
-        analyze(() -> sumArray(new int[]{1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20}));
-        analyze(() -> sumArray(new int[]{1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30}));
+        int[] arraySmall = new int[10];
+        int[] arrayMedium = new int[1000];
+        int[] arrayLarge = new int[1_000_000];
+
+        fillArray(arraySmall);
+        fillArray(arrayMedium);
+        fillArray(arrayLarge);
+
+        analyze(() -> sumArray(arraySmall));
+        analyze(() -> sumArray(arrayMedium));
+        analyze(() -> sumArray(arrayLarge));
     }
 
     // Example method to analyze
@@ -44,6 +52,12 @@ public class ComplexityAnalyzer {
                 sum += num2;
             }
             sum += num;
+        }
+    }
+
+    private static void fillArray(int[] array) {
+        for (int i = 0; i<array.length; i++) {
+            array[i] = i+1;
         }
     }
 }
