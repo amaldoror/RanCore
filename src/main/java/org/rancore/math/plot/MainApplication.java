@@ -8,8 +8,11 @@ public class MainApplication {
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         BorderLayout layout = new BorderLayout();
         FunctionPlotter plotter = new FunctionPlotter();
-
         JFrame frame = new JFrame("Function Plotter");
+        UIComponents uiComponents = new UIComponents(plotter, frame);
+        EventHandler eventHandler = new EventHandler(plotter, frame, uiComponents);
+
+
 
         // Create menu bar
         JMenuBar menuBar = UIComponents.getjMenuBar(plotter);

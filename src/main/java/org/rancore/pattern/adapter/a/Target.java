@@ -1,4 +1,4 @@
-package org.rancore.pattern.adapter;
+package org.rancore.pattern.adapter.a;
 
 public interface Target {
     void request();

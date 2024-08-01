@@ -4,12 +4,12 @@ import javax.swing.*;
 
 import static org.rancore.math.plot.MathParser.evaluate;
 
-public class EventHandlers {
+public class EventHandler {
     private final FunctionPlotter plotter;
     private final JFrame frame;
     private final UIComponents uiComponents;
 
-    public EventHandlers(FunctionPlotter plotter, JFrame frame, UIComponents uiComponents) {
+    public EventHandler(FunctionPlotter plotter, JFrame frame, UIComponents uiComponents) {
         this.plotter = plotter;
         this.frame = frame;
         this.uiComponents = uiComponents;

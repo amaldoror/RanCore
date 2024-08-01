@@ -10,9 +10,9 @@ public class PinGenerator {
         Long seed = 12345L;
 
         String pin = generatePin(pinLength, seed);
-        System.out.println("Generated PIN: " + pin);
+        System.out.println("Generated PIN with seed: " + pin);
         String pin2 = generatePin(pinLength, null);
-        System.out.println("Generated PIN2: " + pin2);
+        System.out.println("Generated random PIN: " + pin2);
     }
 
     public static String generatePin(int length, Long seed) {
