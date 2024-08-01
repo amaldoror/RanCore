@@ -10,7 +10,7 @@ org.rancore.math.plot
 org.rancore.nasa
 org.rancore.path
 org.rancore.pattern.abstract_factory
-org.rancore.pattern.adapter
+org.rancore.pattern.adapter.a
 org.rancore.pattern.bridge
 org.rancore.pattern.builder
 org.rancore.pattern.composite
