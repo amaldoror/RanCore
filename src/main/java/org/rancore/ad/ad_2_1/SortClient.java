@@ -4,8 +4,8 @@ import edu.princeton.cs.algs4.In;
 
 import javax.management.ReflectionException;
 
-import static ad_2_1.SortClassCommons.isSorted;
-import static ad_2_1.SortClassCommons.show;
+import static org.rancore.ad.ad_2_1.SortClassCommons.isSorted;
+import static org.rancore.ad.ad_2_1.SortClassCommons.show;
 
 public class SortClient {
     public static void main(String[] args) throws ReflectionException {

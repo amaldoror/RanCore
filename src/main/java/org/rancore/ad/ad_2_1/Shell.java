@@ -1,7 +1,7 @@
 package org.rancore.ad.ad_2_1;
 
-import static ad_2_1.SortClassCommons.exch;
-import static ad_2_1.SortClassCommons.less;
+import static org.rancore.ad.ad_2_1.SortClassCommons.exch;
+import static org.rancore.ad.ad_2_1.SortClassCommons.less;
 
 public class Shell<T extends Comparable<? super T>>extends SortBase<T> {
     public static <T extends Comparable<? super T>> void sort(T[] a) {

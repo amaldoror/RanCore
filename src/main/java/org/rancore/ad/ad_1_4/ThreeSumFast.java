@@ -6,7 +6,7 @@ import java.util.Arrays;
 
 /**
  * Suche in einem sortierten Array nach einem Element -a[i]-a[j]
- * Wachstumsordnung: 𝑁² log2 𝑁
+ * Wachstumsordnung: N² log2 N
  */
 public class ThreeSumFast {
     public static int count(int[] a){

@@ -2,7 +2,7 @@ package org.rancore.ad.ad_2_3;
 
 import edu.princeton.cs.algs4.StdRandom;
 
-import static ad_2_1.SortClassCommons.*;
+import static org.rancore.ad.ad_2_1.SortClassCommons.*;
 
 public class Quick {
     public static <T extends Comparable<? super T>> void sort(T[] a) {

@@ -8,12 +8,12 @@ public class TwoSumFast {
     // Berechnet die Anzahl der Paare, die summiert 0 ergeben
     public static int count(int[] a){
         int cnt = 0;
-        Arrays.sort(a);     // 𝑵 log𝟐 𝑵
+        Arrays.sort(a);     // N log2 N
         int n = a.length-1;
 
-        for (int i =0; i <= n; i++){        // 𝑵
+        for (int i =0; i <= n; i++){        // N
             int val = a[i];
-            int index = BinarySearch.rank(-val,a);  // log𝟐 𝑵
+            int index = BinarySearch.rank(-val,a);  // log2 N
             if (index >i) cnt++;
         }
         return cnt;

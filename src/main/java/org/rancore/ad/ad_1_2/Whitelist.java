@@ -1,6 +1,6 @@
 package org.rancore.ad.ad_1_2;
 
-import ad_1_1.BinarySearch;
+import org.rancore.ad.ad_1_1.BinarySearch;
 import edu.princeton.cs.algs4.In;
 import edu.princeton.cs.algs4.StdIn;
 import edu.princeton.cs.algs4.StdOut;

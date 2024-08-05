@@ -17,7 +17,7 @@ import java.util.Set;
  * In mehreren Experimenten ließ sich ein kleiner Faktor beobachten,
  * in der sich Insertion- und Selection-Sort unterscheidet.<br>
  * • Das Experiment zum Vergleich der Algorithmen wird mit dem SortCompare-Client
- * durchgeführt, der für 𝑁 zufällig generierte Zahlenfolgen die Laufzeiten der Algorithmen misst
+ * durchgeführt, der für N zufällig generierte Zahlenfolgen die Laufzeiten der Algorithmen misst
  * und in Relation setzt.
  */
 public class SortCompare {

@@ -1,7 +1,7 @@
 package org.rancore.ad.ad_2_2;
 
 
-import static ad_2_1.SortClassCommons.less;
+import static org.rancore.ad.ad_2_1.SortClassCommons.less;
 
 /**
  * In-Place-Merge <br>
