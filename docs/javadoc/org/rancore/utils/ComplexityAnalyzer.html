@@ -91,6 +91,7 @@ loadScripts(document, 'script');</script>
 <hr>
 <div class="type-signature"><span class="modifiers">public class </span><span class="element-name type-name-label">ComplexityAnalyzer</span>
 <span class="extends-implements">extends <a href="https://docs.oracle.com/en/java/javase/20/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a></span></div>
+<div class="block">This class provides functionality to analyze the time and space complexity of a given method.</div>
 </section>
 <section class="summary">
 <ul class="summary-list">
@@ -105,7 +106,9 @@ loadScripts(document, 'script');</script>
 <div class="table-header col-last">Description</div>
 <div class="col-first even-row-color"><code>static interface&nbsp;</code></div>
 <div class="col-second even-row-color"><code><a href="ComplexityAnalyzer.MethodToAnalyze.html" class="type-name-link" title="interface in org.rancore.utils">ComplexityAnalyzer.MethodToAnalyze</a></code></div>
-<div class="col-last even-row-color">&nbsp;</div>
+<div class="col-last even-row-color">
+<div class="block">Functional interface representing a method to be analyzed.</div>
+</div>
 </div>
 </section>
 </li>
@@ -135,13 +138,19 @@ loadScripts(document, 'script');</script>
 <div class="table-header col-last">Description</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static void</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#analyze(org.rancore.utils.ComplexityAnalyzer.MethodToAnalyze)" class="member-name-link">analyze</a><wbr>(<a href="ComplexityAnalyzer.MethodToAnalyze.html" title="interface in org.rancore.utils">ComplexityAnalyzer.MethodToAnalyze</a>&nbsp;method)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+<div class="block">Analyzes the given method by measuring its execution time and memory usage.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static void</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#main(java.lang.String%5B%5D)" class="member-name-link">main</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/20/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>[]&nbsp;args)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+<div class="block">Main method to demonstrate the usage of the ComplexityAnalyzer.</div>
+</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static void</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#sumArray(int%5B%5D)" class="member-name-link">sumArray</a><wbr>(int[]&nbsp;array)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+<div class="block">Example method to analyze that sums the elements of an array.</div>
+</div>
 </div>
 </div>
 </div>
@@ -177,18 +186,34 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="analyze(org.rancore.utils.ComplexityAnalyzer.MethodToAnalyze)">
 <h3>analyze</h3>
 <div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">analyze</span><wbr><span class="parameters">(<a href="ComplexityAnalyzer.MethodToAnalyze.html" title="interface in org.rancore.utils">ComplexityAnalyzer.MethodToAnalyze</a>&nbsp;method)</span></div>
+<div class="block">Analyzes the given method by measuring its execution time and memory usage.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>method</code> - the method to be analyzed</dd>
+</dl>
 </section>
 </li>
 <li>
 <section class="detail" id="main(java.lang.String[])">
 <h3>main</h3>
 <div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">main</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/20/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>[]&nbsp;args)</span></div>
+<div class="block">Main method to demonstrate the usage of the ComplexityAnalyzer.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>args</code> - command-line arguments (not used)</dd>
+</dl>
 </section>
 </li>
 <li>
 <section class="detail" id="sumArray(int[])">
 <h3>sumArray</h3>
 <div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">sumArray</span><wbr><span class="parameters">(int[]&nbsp;array)</span></div>
+<div class="block">Example method to analyze that sums the elements of an array.
+ This method has a time complexity of O(n^2) due to the nested loops.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>array</code> - the array whose elements are to be summed</dd>
+</dl>
 </section>
 </li>
 </ul>
