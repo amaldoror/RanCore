@@ -3,24 +3,31 @@ package org.rancore.ad.ad_1_3;
 import java.util.EmptyStackException;
 
 /**
- * Performance! Anzahl der Elemente explizit verwaltet in N. <br>
- * @param <Item>
+ * A fixed-capacity stack implementation with dynamic resizing.
+ * <p>
+ * Performance optimized by explicitly managing the number of elements in N.
+ *
+ * @param <Item> The type of elements held in this stack
  */
 public class FixedCapacityStack<Item> {
     private Item[] a;
     private int N;
 
+
     public FixedCapacityStack(int cap){
-        // Erzeugung generischer Arrays nicht möglich, daher Cast auf den Typ Item[]
-        a = (Item[])new Object[cap];
+        if (cap <= 0) {
+            throw new IllegalArgumentException("Initial capacity must be positive");
+        }
+        a = (Item[]) new Object[cap];
     }
 
     /**
-     * Legt item als letztes Element auf dem Stapel. <br>
-     * Keine Prüfung, ob N >= a.length. <br> <br>
-     * @param item
+     * Adds an item to the top of the stack.
+     * <p>
+     * If the stack is full, it will automatically resize to double its current capacity.
+     *
+     * @param item The item to be pushed onto the stack
      */
-
     public void push(Item item){
         // Vergrößern des Arrays
         if (N==a.length) resize(2*a.length);
@@ -28,9 +35,12 @@ public class FixedCapacityStack<Item> {
     }
 
     /**
-     * Liefert das zuletzt eingefügte Element vom Stapel. <br>
-     * Keine Prüfung, ob N < 0. <br>
-     * @return
+     * Returns the last inserted element from the stack.
+     * <p>
+     * Note: This method does not check if N &lt; 0.
+     *
+     * @return The last inserted element
+     * @throws EmptyStackException if the stack is empty
      */
     public Item pop(){
         // Prüft Unterlauf
@@ -43,13 +53,31 @@ public class FixedCapacityStack<Item> {
         return it;
     }
 
+    /**
+     * Returns the number of items in the stack.
+     *
+     * @return The number of items in the stack
+     */
     public int size() {return N;}
 
+    /**
+     * Resizes the capacity of the stack.
+     * <p>
+     * This method creates a new array with the specified capacity and copies
+     * the existing elements to the new array.
+     *
+     * @param max The new capacity for the stack
+     */
     private void resize(int max) {
         Item[] newA = (Item[]) new Object[max];
         if (N >= 0) System.arraycopy(a, 0, newA, 0, N);
         a = newA;
     }
 
+    /**
+     * Checks if the stack is empty.
+     *
+     * @return true if the stack is empty, false otherwise
+     */
     public boolean isEmpty() {return N==0;}
 }

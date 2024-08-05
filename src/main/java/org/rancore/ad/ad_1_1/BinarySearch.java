@@ -29,22 +29,32 @@ public class BinarySearch {
     }
 
     /**
-     * Iterativ <br>
-     * Voraussetzung: <br>
-     * - Sortiertes Array a von Zahlen (bei Arrays von Comparable wird die allgemeine
-     * Vergleichsmethode compareTo verwendet) <br>
-     * - Gesucht wird das Element key in a <br>
-     * - Betrachtet wird der Bereich von lo=0 bis hi=a.length-1 <br>
-     * Algorithmus: <br>
-     * 1. Solange lo <=hi: <br>
-     * i. Bestimme die Mitte mid des Arrays <br>
-     * ii. Wenn a[mid] == key, dann beende das Verfahren mit dem Ergebnis mid <br>
-     * iii. Sonst wenn key < a[mid], dann setzte hi auf mid-1 und wiederhole ab 1.) <br>
-     * iv. Sonst wenn key > a[mid], dann setze lo auf mid+1 und wiederhole ab 1.) <br>
-     * 2. Jetzt ist lo > hi, key wurde nicht gefunden und das Ergebnis ist -1. <br>
-     * @param key
-     * @param a
-     * @return
+     * Iterative binary search.
+     * <p>
+     * Preconditions:
+     * <ul>
+     *     <li>Sorted array 'a' of numbers (for arrays of Comparable, the general
+     *         compareTo method is used)</li>
+     *     <li>Searching for element 'key' in 'a'</li>
+     *     <li>Search range is from lo=0 to hi=a.length-1</li>
+     * </ul>
+     * <p>
+     * Algorithm:
+     * <ol>
+     *     <li>While lo <= hi:
+     *         <ol type="a">
+     *             <li>Determine the middle index mid of the array</li>
+     *             <li>If a[mid] == key, end the procedure with the result mid</li>
+     *             <li>Else if key < a[mid], set hi to mid-1 and repeat from step 1</li>
+     *             <li>Else if key > a[mid], set lo to mid+1 and repeat from step 1</li>
+     *         </ol>
+     *     </li>
+     *     <li>Now lo > hi, key was not found and the result is -1</li>
+     * </ol>
+     *
+     * @param key The element to search for
+     * @param a The sorted array to search in
+     * @return The index of the key if found, or -1 if not found
      */
     public static int rank(int key, int[] a) {
         int lo = 0;
