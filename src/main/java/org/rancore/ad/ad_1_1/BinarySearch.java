@@ -41,15 +41,15 @@ public class BinarySearch {
      * <p>
      * Algorithm:
      * <ol>
-     *     <li>While lo <= hi:
+     *     <li>While lo &lt;= hi:
      *         <ol type="a">
      *             <li>Determine the middle index mid of the array</li>
      *             <li>If a[mid] == key, end the procedure with the result mid</li>
-     *             <li>Else if key < a[mid], set hi to mid-1 and repeat from step 1</li>
-     *             <li>Else if key > a[mid], set lo to mid+1 and repeat from step 1</li>
+     *             <li>Else if key &lt; a[mid], set hi to mid-1 and repeat from step 1</li>
+     *             <li>Else if key &gt; a[mid], set lo to mid+1 and repeat from step 1</li>
      *         </ol>
      *     </li>
-     *     <li>Now lo > hi, key was not found and the result is -1</li>
+     *     <li>Now lo &gt; hi, key was not found and the result is -1</li>
      * </ol>
      *
      * @param key The element to search for
