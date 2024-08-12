@@ -10,13 +10,10 @@ import java.util.Random;
  * <p>The CollatzConjecture class provides a method for calculating the Hailstone sequence,
  * also known as the 3n+1 problem. The conjecture asks whether repeating two simple arithmetic
  * operations will eventually transform every positive integer into 1. <p>
- * Some values produce intermediates as high as 2.7*10^7 (for n = 9663)
+ * Some values produce intermediates as high as 2.7*10^7 (for n = 9663).
  *
  * <p><u><b>Instance Variables:</b></u></p>
  * <p>bool <code>debug</code></p>
- *
- * <p><u><b>Constructor:</b></u></p>
- * <p><code>CollatzConjecture():</code> Constructs a new instance of the CollatzConjecture class.</p>
  *
  * <p><u><b>Methods:</b></u></p>
  * <p><code>collatzConjecture(int n)</code>: Calculates the Collatz conjecture.</p>
