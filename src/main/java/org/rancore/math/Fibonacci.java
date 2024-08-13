@@ -22,6 +22,11 @@ public class Fibonacci {
         }
     }
 
+    /**
+     * Caluclates and returns the Fibonacci number at the specified index.
+     * @param n The maximum position Fibonacci sequence
+     * @return The Fibonacci number
+     */
     public static int fibonacci(int n) {
         if (n <= 1) {
             return n;
